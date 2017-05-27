@@ -19,6 +19,7 @@ Route::get('QRHome', "QRCodeHome@displayQR");
 
 //Route::match(['get','post'],'JSONGetter',"JSONGetter@receiver");
 Route::post ('JSONGetter',"JSONGetter@receiver");
+Route::post ('JSONInbox',"JSONInbox@receiver");
 
 /*Route::get('QRHome', function()
 {

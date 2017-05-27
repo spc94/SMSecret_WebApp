@@ -19,6 +19,7 @@ class JSONGetter extends Controller {
         //$jsonArray = json_decode($request->json());
 
         $output = new \Symfony\Component\Console\Output\ConsoleOutput(2);
+        $output->writeln('New Connection!');
         //$output->writeln("Ola!");
         //$output->writeln($data);
 
