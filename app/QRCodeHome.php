@@ -29,7 +29,8 @@ class QRCodeHome extends Controller {
         //return view("QRHomeView");
         $random_hash = Hash::make(str_random(8));
         //QrCode::generate('Make me into a QrCode!');
-        return view("QRHomeView")->with(array('writer'=>$random_hash));
+        //return view("QRHomeView")->with(array('writer'=>$random_hash));
+        return view("welcome");
         //return "x";
     }
 

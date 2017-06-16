@@ -70,6 +70,7 @@ class JSONGetter extends Controller {
             if ($flag == 0) {
                 DB::insert('insert into auth(session_hash,phone_id,created_at) values (?,?,?)', [$sessionHash, $phoneID, new \DateTime()]);
                 $output->writeln("Record inserted into the database");
+
             }
         }
         else{

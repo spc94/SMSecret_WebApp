@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
 class CreateAuthTable extends Migration {
 
 	/**
@@ -15,8 +16,9 @@ class CreateAuthTable extends Migration {
 		Schema::create('auth', function(Blueprint $table)
 		{
             $table->increments('id');
-            $table->string('session_hash');
+            $table->string('session_hash')->index();
             $table->string('phone_id');
+            //$table->string('authenticated')->default('0');
             $table->timestamps();
 		});
 	}

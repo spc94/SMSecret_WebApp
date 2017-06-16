@@ -15,7 +15,7 @@ class CreateUnencTable extends Migration {
         Schema::create('unenc', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('session_hash');
+            $table->string('session_hash')->references('session_hash')->on('auth')->onDelete('cascade');
             $table->string('phone_number');
             $table->text('message');
         });
