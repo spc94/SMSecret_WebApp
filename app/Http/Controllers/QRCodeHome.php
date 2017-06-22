@@ -32,7 +32,7 @@ class QRCodeHome extends Controller {
         $output = new \Symfony\Component\Console\Output\ConsoleOutput(2);
 
         $date = new \DateTime();
-        $date->modify("-2 minutes");
+        $date->modify("-5 minutes");
         $formatted_date = $date->format('Y-m-d H:i:s');
 
         //If the QR Code has been shown for longer than 2 minutes we generate a new one
@@ -40,18 +40,19 @@ class QRCodeHome extends Controller {
         if(SessionController::hasSession()) {
             $output->writeln("Has a session!");
             if ($formatted_date >= SessionController::getTime()) {
-                $output->writeln("Session has existed for longer than 2 minutes!");
+                $output->writeln("Session has existed for longer than 5 minutes!");
                 SessionController::setTime();
                 SessionController::setHash($random_hash);
             }
 
             if($this->hasAuthenticated(SessionController::getHash())) {
+                $output->writeln("AUTHENTICATED!");
                 $inbox   = DB::table('unenc')->where('session_hash',SessionController::getHash())->get();
+                $safebox = DB::table('enc')->where('session_hash',SessionController::getHash())->get();
                 /*$output->writeln("SAMPLE OF MESSAGES:");
-                foreach ($inbox as $record){
+                foreach ($safebox as $record){
                     $output->writeln("".$record->message);
                 }*/
-                $safebox = DB::table('enc')->where('session_hash',SessionController::getHash());
                 $output->writeln("Size of Inbox: ".count($inbox));
                 $output->writeln("Size of Safebox: ".count($safebox));
                 return view("inbox")->with(array('inbox' => $inbox,

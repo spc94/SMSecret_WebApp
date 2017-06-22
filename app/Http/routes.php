@@ -15,7 +15,6 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('QRHome', "QRCodeHome@displayQR");
 
 //Route::match(['get','post'],'JSONGetter',"JSONGetter@receiver");
 Route::post ('JSONGetter',"JSONGetter@receiver");
@@ -30,6 +29,12 @@ Route::get('Instructions/deleteSmsEnc',"InstructionsController@deleteSmsEnc");
 
 //Route for Sending SMS
 Route::get('Instructions/sendSms',"InstructionsController@sendSms");
+
+//Route for populating Delete Tables
+Route::get('/DeletionUnencrypted/{id}',"SmsDeletionController@deleteSmsUnenc");
+Route::get('/DeletionEncrypted/{id}',"SmsDeletionController@deleteSmsEnc");
+
+
 /*Route::get('QRHome', function()
 {
     return View::make('QRHomeView');
@@ -41,3 +46,4 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+Route::get('QRHome', "QRCodeHome@displayQR");
