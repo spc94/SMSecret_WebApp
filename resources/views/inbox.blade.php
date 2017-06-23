@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="<?php echo asset('css/tables.css')?>" type="text/css">
 <h1><span class="blue">&lt;</span>SMSecret<span class="blue">&gt;</span> <span class="yellow">Inbox</pan></h1>
-
+<div align="right" >
+    <a href="{!! ('/sendSms') !!}">
+        <img src="/res/web_hi_res_512_create.png" height="50px" width="50px"></a>
+</div>
 @if(count($inbox) > 0)
     <table class="container">
 
