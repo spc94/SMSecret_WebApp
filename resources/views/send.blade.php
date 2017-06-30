@@ -1,10 +1,6 @@
 <link rel="stylesheet" href="<?php echo asset('css/tables.css')?>" type="text/css">
-<form action="/action_page.php">
-    Phone Number: <input type="tel" name="phone" value="Mickey"><br>
-    Message: <input type="text" name="msg" value="Mouse"><br>
-    <input type="submit" value="Submit">
-</form>
 
+<div align="center" style="padding-top: 100px"/>
 
 <h1><span class="blue">&lt;</span>SMSecret<span class="blue">&gt;</span> <span class="yellow">Send SMS</pan></h1>
 
@@ -12,9 +8,6 @@
     <h2>Message Sent!</h2>
 @endif
 
-@if($sent == "2")
-    <h2>Invalid number or empty message!</h2>
-@endif
 
 <div align="center" method="get" action="/sendSms">
     <form class="form">
