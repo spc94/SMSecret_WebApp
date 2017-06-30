@@ -31,11 +31,11 @@ Route::get('Instructions/deleteSmsEnc',"InstructionsController@deleteSmsEnc");
 Route::get('Instructions/sendSms',"InstructionsController@sendSms");
 
 //Route for populating Delete Tables
-Route::get('/DeletionUnencrypted/{id}',"SmsDeletionController@deleteSmsUnenc");
-Route::get('/DeletionEncrypted/{id}',"SmsDeletionController@deleteSmsEnc");
+Route::get('DeletionUnencrypted/{id}',"SmsDeletionController@deleteSmsUnenc");
+Route::get('DeletionEncrypted/{id}',"SmsDeletionController@deleteSmsEnc");
 
 //Route for populate SMS Send Table
-Route::get('/sendSms',"SmsSendController@smsSend");
+Route::get('sendSms',"SmsSendController@smsSend");
 
 
 /*Route::get('QRHome', function()
