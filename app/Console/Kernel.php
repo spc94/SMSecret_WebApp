@@ -35,7 +35,19 @@ class Kernel extends ConsoleKernel {
             $formatted_date = $date->format('Y-m-d H:i:s');
             Log::info("After formatted date.");
 
-		    DB::table('auth')->where('created_at','<=',$formatted_date)->delete();
+            $expiredHashes = DB::table('auth')->where('created_at','<=',$formatted_date)->get();
+
+            foreach ($expiredHashes as $hash) {
+                Log::info("Expired Hash: ".$hash->session_hash);
+                Log::info("Date: ".$hash->created_at);
+                DB::table('unenc')->where('session_hash',$hash->session_hash)->delete();
+                DB::table('enc')->where('session_hash',$hash->session_hash)->delete();
+                DB::table('deletesmsunenc')->where('session_hash',$hash->session_hash)->delete();
+                DB::table('deletesmsenc')->where('session_hash',$hash->session_hash)->delete();
+                DB::table('sendsms')->where('session_hash',$hash->session_hash)->delete();
+                DB::table('auth')->where('session_hash',$hash->session_hash)->delete();
+            }
+
 		    Log::info("After DB Deletion.");
         })->everyFiveMinutes();
 	}
